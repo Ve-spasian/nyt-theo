@@ -2,7 +2,7 @@ name: Daily NYT Digest
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # 6am Pacific = 2pm UTC (14:00)
+    - cron: '0 2 * * *'  # 6pm Pacific = 2am UTC (2:00)
   workflow_dispatch:  # allows manual trigger
 
 jobs:
@@ -25,4 +25,3 @@ jobs:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: python main.py
-        

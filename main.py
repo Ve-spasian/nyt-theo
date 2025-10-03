@@ -11,9 +11,9 @@ APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
 KEYWORDS = [
     "Israel", "Middle East", "Gaza", "Hamas", "Iran",
     "White House", "Congress", "Trump",
-    "economy", "Federal Reserve", "inflation", "market"
+    "economy", "Federal Reserve", "inflation", "market", "science"
 ]
-SECTIONS = ["world", "us", "business"]
+SECTIONS = ["world", "us", "business", "science"]
 
 def fetch_articles():
     articles = []
@@ -52,6 +52,7 @@ def send_email(articles):
 
 if __name__ == "__main__":
     articles = fetch_articles()
+    print(f"Found {len(articles)} articles")
     if articles:
         send_email(articles)
     else:
