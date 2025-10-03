@@ -1,0 +1,28 @@
+name: Daily NYT Digest
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # 6am Pacific = 2pm UTC (14:00)
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run script
+        env:
+          NYT_API_KEY: ${{ secrets.NYT_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python main.py
+      
