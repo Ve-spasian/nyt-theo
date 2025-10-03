@@ -11,9 +11,9 @@ APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
 KEYWORDS = [
     "Israel", "Middle East", "Gaza", "Hamas", "Iran",
     "White House", "Congress", "Trump",
-    "economy", "Federal Reserve", "inflation", "market", "science"
+    "economy", "Federal Reserve", "inflation", "market", "science", "culture", "tech", "artificial intelligence"
 ]
-SECTIONS = ["world", "us", "business", "science"]
+SECTIONS = ["world", "us", "business", "science", "tech", "artificial intelligence"]
 
 def fetch_articles():
     articles = []
@@ -32,7 +32,7 @@ def fetch_articles():
         if a[0] not in seen:
             unique.append(a)
             seen.add(a[0])
-    return unique[:3]
+    return unique[:6]
 
 def send_email(articles):
     today = datetime.now().strftime("%A, %B %d")
